@@ -1,0 +1,10 @@
+{
+  "Name": "EurekaLog",
+  "Author": "Community Project",
+  "Punchline": "A persistent Eureka challenge log overlay.",
+  "Description": "Eureka Challenge Log journal with saved, UI-verified objective counts. Requires manual Challenge Log scrolling to synchronize; no automatic kill tracking.",
+  "ApplicableVersion": "any",
+  "InternalName": "EurekaLog",
+  "DalamudApiLevel": 15,
+  "AssemblyVersion": "1.2.0.0"
+}
