@@ -1,0 +1,18 @@
+
+[
+  {
+    "Author": "ElfinFable",
+    "Name": "EurekaLog",
+    "InternalName": "EurekaLog",
+    "AssemblyVersion": "1.2.0.0",
+    "DalamudApiLevel": 15,
+    "ApplicableVersion": "any",
+    "Punchline": "A persistent Eureka challenge log overlay.",
+    "Description": "Eureka Challenge Log journal with saved, UI-verified objective counts. Open and scroll the Challenge Log to synchronize progress.",
+    "RepoUrl": "https://github.com/ElfinFable/EurekaLog",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkInstall": "https://github.com/ElfinFable/EurekaLog/releases/download/v1.2.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/ElfinFable/EurekaLog/releases/download/v1.2.0/latest.zip"
+  }
+]
