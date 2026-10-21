@@ -35,18 +35,30 @@ jobs:
             $file = Get-ChildItem dalamud -Recurse -File |
               Where-Object Name -EQ $name |
               Select-Object -First 1
-            if (-not $file) { throw "Missing Dalamud dependency: $name" }
+            if (-not $file) { throw "Missing dependency: $name" }
             Copy-Item $file.FullName "refs/$name"
           }
+
+      - name: Add DalamudPackager
+        run: dotnet add EurekaLog.csproj package DalamudPackager --version 15.0.0
 
       - name: Build plugin
         run: dotnet build EurekaLog.csproj -c Release
 
-      - name: Upload compiled plugin
+      - name: Verify and upload package
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem "bin/Release" -Recurse -Filter latest.zip |
+            Select-Object -First 1
+          if (-not $zip) {
+            throw "DalamudPackager did not produce latest.zip"
+          }
+          New-Item -ItemType Directory -Path publish -Force | Out-Null
+          Copy-Item $zip.FullName "publish/latest.zip"
+
+      - name: Upload Dalamud package
         uses: actions/upload-artifact@v4
         with:
-          name: EurekaLog-Build
-          path: |
-            bin/Release/**/EurekaLog.dll
-            bin/Release/**/EurekaLog.json
+          name: EurekaLog-Dalamud-Package
+          path: publish/latest.zip
           if-no-files-found: error
